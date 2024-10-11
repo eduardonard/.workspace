@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import os
+import time
+
+def get_cpu_usage():
+    # Read CPU times from /proc/stat
+    with open("/proc/stat", "r") as f:
+        first_line = f.readline().strip()
+    
+    # Parse the first line for CPU times
+    values = first_line.split()[1:]
+    values = list(map(int, values))
+    total_time = sum(values)
+    idle_time = values[3]  # The 4th value is idle time
+
+    return total_time, idle_time
+
+def calculate_cpu_usage():
+    # Get initial CPU times
+    total_time_1, idle_time_1 = get_cpu_usage()
+    time.sleep(1)  # Wait for 1 second
+    
+    # Get CPU times again
+    total_time_2, idle_time_2 = get_cpu_usage()
+
+    # Calculate deltas
+    total_delta = total_time_2 - total_time_1
+    idle_delta = idle_time_2 - idle_time_1
+
+    # Calculate CPU usage percentage
+    usage = 100 * (total_delta - idle_delta) / total_delta
+    return usage
+
+def main():
+    cpu_usage = calculate_cpu_usage()
+
+    # Determine color based on CPU usage
+    if cpu_usage < 50:
+        color = "#ffffff"  # Green for low usage
+    elif cpu_usage < 70:
+        color = "#FFFF00"  # Yellow for moderate usage
+    else:
+        color = "#FF0000"  # Red for high usage
+
+    # Display the CPU usage in i3blocks format
+    print(f"🖥️ {int(cpu_usage)}%")  # Short output for i3blocks
+    print(f"CPU Usage: {cpu_usage:.1f}%")  # Full output for tooltip
+    print(color)  # Color coding
+
+if __name__ == "__main__":
+    main()

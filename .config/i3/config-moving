@@ -1,0 +1,41 @@
+############################################################################################
+###################################moving###################################################
+############################################################################################
+
+# move focus
+bindsym $mod+h focus left
+bindsym $mod+j focus Down
+bindsym $mod+k focus Up
+bindsym $mod+l focus right
+
+#move window
+bindsym $mod+$mods+h move left
+bindsym $mod+$mods+j move Down
+bindsym $mod+$mods+k move Up
+bindsym $mod+$mods+l move right
+
+# move workspace
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output Down
+bindsym $mod+Ctrl+k move workspace to output Up
+bindsym $mod+Ctrl+l move workspace to output right
+
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym $mod+Shift+f floating toggle
+floating_modifier $mod

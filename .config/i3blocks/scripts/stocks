@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+
+import yfinance as yf
+import pytz
+from datetime import datetime, timedelta, time
+import holidays
+
+def countdown_to_market_open():
+    # Set timezone to Eastern Standard Time (EST)
+    eastern_tz = pytz.timezone('America/Chicago')
+    current_time_eastern = datetime.now(eastern_tz)
+
+    # Define market open and close times
+    market_open_time = time(9, 30)  # Market opens at 9:30 AM EST
+    market_close_time = time(16, 0)  # Market closes at 4:00 PM EST
+
+    # Check if today is a holiday
+    nyse_holidays = holidays.NYSE()
+    today_date_str = current_time_eastern.strftime('%Y-%m-%d')
+    is_holiday = nyse_holidays.get(today_date_str)
+
+    # Check if the current day is a weekend or holiday
+    if is_holiday or current_time_eastern.weekday() >= 5:
+        return "The market is closed today."
+
+    # Check if the market is currently open
+    if market_open_time <= current_time_eastern.time() <= market_close_time:
+        return 0
+
+    # Calculate the next market opening time
+    if current_time_eastern.time() < market_open_time:
+        next_opening = datetime.combine(current_time_eastern.date(), market_open_time)
+    else:
+        # Move to next weekday for opening time
+        next_opening_date = current_time_eastern.date() + timedelta(days=(7 - current_time_eastern.weekday()) % 7)
+        next_opening = datetime.combine(next_opening_date, market_open_time)
+    
+    # Make next_opening aware of the timezone
+    next_opening = eastern_tz.localize(next_opening)
+
+    # Calculate the difference between the market open time and current time
+    difference = next_opening - current_time_eastern
+    
+    # Return the difference as a string (time remaining for market open)
+    return ":".join(str(difference).split(".")[0].split(":")[0:2])
+
+
+    
+def get_todays_stock_return(stock_symbol):
+    # Download stock data for today
+    stock_data = yf.download(stock_symbol, period="2d", interval="1d", progress=False)
+    
+    # Get today's and yesterday's closing prices
+    today_close = stock_data['Close'].iloc[-1]
+    yesterday_close = stock_data['Close'].iloc[-2]
+    
+    # Calculate the return as the percentage change
+    stock_return = ((today_close - yesterday_close) / yesterday_close) * 100
+    
+    return stock_return.values[0]
+
+if countdown_to_market_open() != 0:
+    print("Opens in", countdown_to_market_open())
+    exit()
+
+printer = "" 
+for ticker in ["QQQ","PSTG"]:
+    todays_return = get_todays_stock_return(ticker)
+    printer += f"{ticker}: {round(todays_return, 2)}% "
+
+
+print(printer)

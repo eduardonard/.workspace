@@ -1,0 +1,27 @@
+############################################################################################
+###################################main#####################################################
+############################################################################################
+
+set $mod Mod4
+set $mods Shift
+font pango:Source Code Pro for Powerline 11
+
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id mate-volume-control-applet
+exec --no-startup-id mate-volume-control-status-icon
+exec --no-startup-id /usr/libexec/mate-panel/notification-area-applet
+exec --no-startup-id parcellite
+
+
+exec_always feh --bg-scale ~/.workspace/.config/wallpaper/wallpaper.png
+
+bar {
+        status_command SCRIPT_DIR=~/.workspace/.config/i3blocks/scripts i3blocks
+}
+
+exec_always feh --bg-fill ~/.workspace/.config/wallpaper/wallpaper.png
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+
+exec --no-startup-id ~/.screenlayout/home.sh

@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+def get_temperature():
+    # Check if temperature file exists (typically under /sys/class/thermal)
+    try:
+        with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+            # The value is typically in millidegrees Celsius (e.g., 48000 means 48.0°C)
+            temperature = int(f.read().strip()) / 1000.0  # Convert to Celsius
+            return temperature
+    except FileNotFoundError:
+        # Return None if the temperature file doesn't exist
+        return None
+
+def main():
+    temperature = get_temperature()
+
+    if temperature < 65:
+        color = "#ffffff"  # Green for low usage
+    elif temperature < 70:
+        color = "#FFFF00"  # Yellow for moderate usage
+    else:
+        color = "#FF0000"  # Red for high usage
+
+    # Display temperature if available
+    if temperature is not None:
+        print(f"🌡️ {int(temperature)}°C")  # Short output for i3blocks
+        print(f"Temperature: {int(temperature)}°C")  # Full output for tooltip
+        print(color)  # Color coding
+
+
+if __name__ == "__main__":
+    main()

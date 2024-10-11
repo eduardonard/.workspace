@@ -1,0 +1,39 @@
+############################################################################################
+###################################bindsyms#################################################
+############################################################################################
+
+
+bindsym $mod+$mods+o exec off
+# Keybindings for changing keyboard layouts
+bindsym $mod+$mods+u exec setxkbmap us
+bindsym $mod+$mods+i exec setxkbmap it
+# Keybindings for launching applications
+bindsym $mod+$mods+s exec shutter --select
+bindsym $mod+$mods+b exec bluetoothctl connect 08:12:A5:E2:04:9F
+bindsym $mod+$mods+w exec sh -c 'flameshot gui --raw | tesseract-ocr stdin stdout | xclip -in -selection clipboard'
+
+# Keybindings for i3 management
+bindsym $mod+$mods+q kill
+bindsym $mod+$mods+c reload
+bindsym $mod+$mods+r restart
+bindsym $mod+$mods+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$mods+d exec --no-startup-id ~/.workspace/.config/scripts/wake-and-sleep-monitors.py
+bindsym $mod+$mods+m exec --no-startup-id bash -c 'i3lock -c 000000'
+# Keybinding for toggling window floating mode
+bindsym $mod+$mods+space floating toggle
+
+
+bindsym $mod+Return      exec gnome-terminal
+bindsym $mod+e           layout toggle split
+bindsym $mod+x           exec gnome-control-center
+
+bindsym $mod+f           fullscreen toggle
+
+bindsym $mod+s           layout stacking
+bindsym $mod+t           layout tabbed
+bindsym $mod+y           layout splith
+
+bindsym $mod+space       focus mode_toggle
+
+
+bindsym $mod+d           exec ~/.config/rofi/launchers/type-3/launcher.sh

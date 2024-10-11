@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+import subprocess
+import re
+
+def get_speed():
+    """Run speedtest-cli and return download and upload speeds in Mbps."""
+    try:
+        # Run speedtest-cli to get the speeds
+        result = subprocess.run(['speedtest-cli', '--simple'], capture_output=True, text=True, check=True)
+        output = result.stdout
+
+        # Extract download and upload speeds using regular expressions
+        download_match = re.search(r'Download:\s+([\d.]+)\s+Mbit/s', output)
+        upload_match = re.search(r'Upload:\s+([\d.]+)\s+Mbit/s', output)
+
+        if download_match and upload_match:
+            download_speed = float(download_match.group(1))
+            upload_speed = float(upload_match.group(1))
+            return download_speed, upload_speed
+        else:
+            return None, None
+
+    except subprocess.CalledProcessError:
+        return None, None
+
+def speed_color(speed):
+    """Return an appropriate emoji based on the speed (in Mbps)."""
+    if speed < 5:
+        return '#FF0000'  # Slow
+    elif speed < 20:
+        return '#ff6a00'  # Moderate
+    elif speed < 50:
+        return '#fbff00'  # Fast
+    else:
+        return '#ffffff'  # Very Fast
+
+def main():
+    # Get the current speeds
+    download_speed, upload_speed = get_speed()
+
+    if download_speed is None or upload_speed is None:
+        print("")
+        return
+    average_speed = min(download_speed, upload_speed)
+
+    # Print the results for i3blocks
+    print(f"↓ {int(download_speed)} | ↑ {int(upload_speed)}")
+    print("")
+    print(speed_color(average_speed))
+
+
+if __name__ == "__main__":
+    main()

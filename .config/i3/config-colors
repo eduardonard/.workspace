@@ -1,0 +1,16 @@
+############################################################################################
+###################################colors###################################################
+############################################################################################
+
+set $bg-color 	         #F41F42
+set $inactive-bg-color   #495062
+set $text-color          #f3f4f5
+set $inactive-text-color #f3f4f5
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text
+client.focused          $bg-color           $bg-color          $text-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color 
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color

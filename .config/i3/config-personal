@@ -1,0 +1,37 @@
+############################################################################################
+###################################personal#################################################
+############################################################################################
+
+assign [class="Opera"]             $ws0
+# exec --no-startup-id sh -c 'sleep 60 && pgrep -x "opera"              || opera'
+
+assign [class="firefox"] $ws1
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "firefox"            || firefox'
+
+assign [class="Gnome-terminal"]       $ws2
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'
+
+assign [class="Code"]                 $ws3
+# exec --no-startup-id sh -c 'sleep 30 && pgrep -x "code"               || code'
+for_window [class="Code"]   layout tabbed
+
+assign [class="anytype"]   $ws4
+exec --no-startup-id sh -c 'sleep 120 && pgrep -x "anytype" || anytype'
+
+assign [class="discord"]              $ws5
+# exec --no-startup-id sh -c 'sleep 120 && pgrep -x "discord"            || discord'
+for_window [class="discord"]              layout tabbed
+
+assign [class="Whatsapp-for-linux"]   $ws5
+# exec --no-startup-id sh -c 'sleep 130 && pgrep -x "whatsapp-for-linux" || whatsapp-for-linux'
+
+assign [class="System Monitor"] $ws10
+exec --no-startup-id sh -c 'sleep 60 && pgrep -x "gnome-system-monitor" || gnome-system-monitor'
+
+##################################################################################################
+for_window [class="Gedit"]                floating enable
+
+
+
+##################################################################################################
+exec --no-startup-id xinput set-prop "FTCS0038:00 2808:0106 Touchpad" "libinput Tapping Enabled" 1 # enable soft tapping

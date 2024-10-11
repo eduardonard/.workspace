@@ -1,0 +1,37 @@
+############################################################################################
+#######################################work#################################################
+############################################################################################
+
+assign [class="Opera"]                $ws0
+# exec --no-startup-id sh -c 'sleep 6 && pgrep -x "opera"              || opera'
+
+
+assign [class="Google-chrome"]        $ws1
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "google-chrome"      || google-chrome'      
+
+
+assign [class="Gnome-terminal"]       $ws2
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'
+
+
+assign [class="Code"]                 $ws3
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "code"               || code'
+for_window [class="Code"]   layout tabbed
+for_window [class="Code"] title_format "VScode"
+assign [class="jetbrains-idea-ce"]    $ws3
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "jetbrains-idea-ce"  || jetbrains-idea-ce'
+
+assign [class="anytype"]              $ws4
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "anytype"            || anytype'
+
+
+assign [class="Slack"]                $ws5
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "slack"              || slack'
+
+
+
+
+
+##################################################################################################
+for_window [class="Gedit"]                floating enable
+

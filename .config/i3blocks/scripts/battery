@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+import os
+
+def get_battery_status():
+    try:
+        # Path to battery information
+        base_path = "/sys/class/power_supply/BAT0/"
+        
+        # Read battery capacity
+        with open(os.path.join(base_path, "capacity")) as f:
+            capacity = f.read().strip()
+        
+        # Read battery status (Charging/Discharging/Full)
+        with open(os.path.join(base_path, "status")) as f:
+            status = f.read().strip()
+        
+        # Read battery power rate (current or average power in microWatts)
+        with open(os.path.join(base_path, "power_now")) as f:
+            power_now = int(f.read().strip()) / 1_000_000  # Convert to Watts
+        
+        # Read battery energy (remaining energy in microWatt-hours)
+        with open(os.path.join(base_path, "energy_now")) as f:
+            energy_now = int(f.read().strip()) / 1_000_000  # Convert to Watt-hours
+
+        # Read battery full energy (design capacity in microWatt-hours)
+        with open(os.path.join(base_path, "energy_full")) as f:
+            energy_full = int(f.read().strip()) / 1_000_000  # Convert to Watt-hours
+
+        return capacity, status, power_now, energy_now, energy_full
+    except FileNotFoundError:
+        return None, "Battery information not found", None, None, None
+
+def calculate_time_left(status, power_now, energy_now, energy_full):
+    if power_now <= 0:
+        return ""
+    if status == "Charging":
+        time_left = (energy_full - energy_now) / power_now  # Time to full charge in hours
+    elif status == "Discharging":
+        time_left = energy_now / power_now  # Time to full discharge in hours
+    else:
+        return "N/A"
+    hours = int(time_left)
+    minutes = int((time_left - hours) * 60)
+    return f"({hours}h {minutes}m)"
+
+def main():
+    capacity, status, power_now, energy_now, energy_full = get_battery_status()
+
+    if capacity is None:
+        print("")
+    else:
+        # Calculate time left for full charge or discharge
+        time_left = calculate_time_left(status, power_now, energy_now, energy_full)
+
+        # Display the battery information in i3blocks format
+        status_symbol = {
+            "Charging": "🔌",
+            "Discharging": "⚡",
+            "Full": "🔋"
+        }.get(status, "🔋")
+
+        if (status == "Charging" or status == "Full" or status == "Not charging" ) and int(capacity) > 95:
+            capacity = 100
+
+        print(f"{status_symbol}{capacity}% {time_left}")  # Short output for i3blocks
+        print(f"Battery: {capacity}% ({status}, {time_left} remaining)")  # Full output for tooltip
+        print("#ffffff" if status == "Full" or int(capacity) > 50 else "#FF0000")  # Color coding
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,21 @@
+############################################################################################
+###################################moving###################################################
+############################################################################################
+
+# move focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#move window
+bindsym $mod+$mods+Left move left
+bindsym $mod+$mods+Down move down
+bindsym $mod+$mods+Up move up
+bindsym $mod+$mods+Right move right
+
+# move workspace
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Up move workspace to output Up
+bindsym $mod+Ctrl+Down move workspace to output Down

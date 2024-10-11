@@ -1,0 +1,42 @@
+############################################################################################
+#######################################work#################################################
+############################################################################################
+
+assign [class="Opera"]                $ws0
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "opera"              || opera'
+
+
+assign [class="Google-chrome"]        $ws1
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "google-chrome"      || google-chrome'      
+
+
+assign [class="Gnome-terminal"]       $ws2
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'
+
+
+assign [class="jetbrains-idea"]       $ws3
+assign [class="Code"]                 $ws3
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "code"               || code'
+for_window [class="Code"]   layout tabbed
+
+
+assign [class="anytype"]              $ws4
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "anytype"            || anytype'
+
+
+assign [class="Slack"]                $ws5
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "slack"              || slack'
+
+
+
+
+
+##################################################################################################
+for_window [class="Gedit"]                floating enable
+
+
+
+##################################################################################################
+exec --no-startup-id xinput set-prop "ELAN0683:00 04F3:320B Touchpad" "libinput Tapping Enabled" 1 # enable soft tapping
+exec --no-startup-id xrandr --output DP-1 --auto --scale 1.25x1.25 # monitor
+exec --no-startup-id xrandr --output eDP-1 --auto --scale 0.75x0.75 # laptop

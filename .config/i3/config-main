@@ -1,0 +1,17 @@
+############################################################################################
+###################################main#####################################################
+############################################################################################
+
+set $mod Mod4
+set $mods Shift
+font pango:Source Code Pro for Powerline 11
+
+exec --no-startup-id nm-applet # network manager
+exec_always feh --bg-scale ~/.workspace/.config/wallpaper.jpg
+
+bar {
+        status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
+}
+
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms

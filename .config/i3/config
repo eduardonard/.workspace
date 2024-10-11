@@ -1,6 +1,7 @@
 set $mod Mod4
 set $mods Shift
-exec --no-startup-id xinput set-prop "FTCS0038:00 2808:0106 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "FTCS0038:00 2808:0106 Touchpad" "libinput Tapping Enabled" 1 # enable soft tapping
+exec --no-startup-id nm-applet # network manager
 
 font pango:Source Code Pro for Powerline 11
 
@@ -61,7 +62,7 @@ bindsym $mod+y           layout splith
 bindsym $mod+space       focus mode_toggle
 
 
-bindsym $mod+d           exec dmenu_run
+bindsym $mod+d           exec ~/.config/rofi/launchers/type-3/launcher.sh
 ##############################################################################
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%

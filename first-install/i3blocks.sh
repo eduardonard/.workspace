@@ -1,8 +1,7 @@
 sudo apt-get install autoconf
-git clone https://github.com/vivien/i3blocks
-cd i3blocks
-rm -rf .git
+cd ~/.workspace/.config/i3blocks
 ./autogen.sh
 ./configure
 make
 make install
+cd ~

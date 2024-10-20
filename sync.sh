@@ -21,7 +21,8 @@ if ! command -v i3blocks &> /dev/null; then
     exit 1
 fi
 rm -rf ~/.config/i3blocks
-cp -rf .config/i3blocks/ ~/.config/i3blocks
+mkdir -p ~/.config/i3blocks
+cp -rf ~/.config/i3blocks/ ~/.config/i3blocks
 
 if ! command -v rofi &> /dev/null; then
     echo "Rofi is not installed. Please install rofi and try again."

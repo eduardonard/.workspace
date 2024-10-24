@@ -103,8 +103,9 @@ set $ws8 "8 Free"
 set $ws9 "9 Free"
 set $ws10 "10 Spotify"
 
-assign [class="Chat-gpt"]             $ws0
+assign [class="opera"]             $ws0
 assign [class="Google-chrome"]        $ws1
+assign [class="firefox"] $ws1
 assign [class="Gnome-terminal"]       $ws2
 assign [class="Code"]                 $ws3
 assign [class="Postman"]              $ws3
@@ -113,7 +114,6 @@ assign [class="discord"]              $ws5
 assign [class="Whatsapp-for-linux"]   $ws5
 assign [class="notion-calendar-snap"] $ws6
 assign [class="Calendar"] $ws6
-# assign [class="firefox"] $ws7
 # assign [class=""] $ws9
 # assign [class=""] $ws10
 assign [class="Spotify"] $ws10
@@ -125,8 +125,9 @@ for_window [class="notion-snap-reborn"]   layout tabbed
 for_window [class="gnome-control-center"] floating enable
 for_window [class="Gedit"]                floating enable
 
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "chat-gpt"           || chat-gpt'                    # 0
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "google-chrome"      || google-chrome'               # 1
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "opera"        || opera'                    # 0
+# exec --no-startup-id sh -c 'sleep 6 && pgrep -x "google-chrome"      || google-chrome'               # 1
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "firefox"            || firefox'                    # 1
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'              # 2
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "code"               || code'                         # 3
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "postman"            || postman'                      # 3
@@ -135,7 +136,6 @@ exec --no-startup-id sh -c 'sleep 6 && pgrep -x "discord"            || discord'
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "whatsapp-for-linux" || whatsapp-for-linux'           # 5
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "notion-calendar-snap" || notion-calendar-snap'           # 6
 # exec --no-startup-id sh -c 'sleep 6 && pgrep -x "slack"              || slack'                      # 6
-# exec --no-startup-id sh -c 'sleep 6 && pgrep -x "firefox"            || firefox'                    # 7
 # exec --no-startup-id sh -c 'sleep 6 && pgrep -x "" || '                                              # 9
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "spotify"            || spotify'                      # 10
 

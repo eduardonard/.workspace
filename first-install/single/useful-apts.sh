@@ -12,6 +12,7 @@ sudo snap install code --classic
 sudo snap install nvim --classic
 
 snap install discord
+snap install opera
 snap install firefox
 snap install notion-snap-reborn
 snap install notion-calendar-snap

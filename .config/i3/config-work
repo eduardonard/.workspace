@@ -14,11 +14,12 @@ assign [class="Gnome-terminal"]       $ws2
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'
 
 
-assign [class="jetbrains-idea"]       $ws3
 assign [class="Code"]                 $ws3
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "code"               || code'
 for_window [class="Code"]   layout tabbed
-
+for_window [class="Code"] title_format "VScode"
+assign [class="jetbrains-idea-ce"]    $ws3
+exec --no-startup-id sh -c 'sleep 6 && pgrep -x "jetbrains-idea-ce"  || jetbrains-idea-ce'
 
 assign [class="anytype"]              $ws4
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "anytype"            || anytype'
@@ -37,6 +38,4 @@ for_window [class="Gedit"]                floating enable
 
 
 ##################################################################################################
-exec --no-startup-id xinput set-prop "ELAN0683:00 04F3:320B Touchpad" "libinput Tapping Enabled" 1 # enable soft tapping
-exec --no-startup-id xrandr --output DP-1 --auto --scale 1.25x1.25 # monitor
-exec --no-startup-id xrandr --output eDP-1 --auto --scale 0.75x0.75 # laptop
+exec --no-startup-id ~/.workspace/.config/scripts/monitor-change

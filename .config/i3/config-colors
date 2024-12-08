@@ -5,7 +5,7 @@
 set $bg-color 	         #F41F42
 set $inactive-bg-color   #495062
 set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
+set $inactive-text-color #f3f4f5
 set $urgent-bg-color     #E53935
 
 # window colors

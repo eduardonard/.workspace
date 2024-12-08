@@ -3,7 +3,7 @@
 ############################################################################################
 
 assign [class="Opera"]             $ws0
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "opera"              || opera'
+exec --no-startup-id sh -c 'sleep 16 && pgrep -x "opera"              || opera'
 
 assign [class="firefox"] $ws1
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "firefox"            || firefox'
@@ -12,21 +12,21 @@ assign [class="Gnome-terminal"]       $ws2
 exec --no-startup-id sh -c 'sleep 6 && pgrep -x "Terminal"           || gnome-terminal'
 
 assign [class="Code"]                 $ws3
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "code"               || code'
+exec --no-startup-id sh -c 'sleep 30 && pgrep -x "code"               || code'
 for_window [class="Code"]   layout tabbed
 
 assign [class="notion-snap-reborn"]   $ws4
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "notion-snap-reborn" || notion-snap-reborn'
+exec --no-startup-id sh -c 'sleep 30 && pgrep -x "notion-snap-reborn" || notion-snap-reborn'
 
 assign [class="discord"]              $ws5
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "discord"            || discord'
+exec --no-startup-id sh -c 'sleep 30 && pgrep -x "discord"            || discord'
 for_window [class="discord"]              layout tabbed
 
 assign [class="Whatsapp-for-linux"]   $ws5
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "whatsapp-for-linux" || whatsapp-for-linux'
+exec --no-startup-id sh -c 'sleep 30 && pgrep -x "whatsapp-for-linux" || whatsapp-for-linux'
 
 assign [class="notion-calendar-snap"] $ws6
-exec --no-startup-id sh -c 'sleep 6 && pgrep -x "notion-calendar-snap" || notion-calendar-snap'
+exec --no-startup-id sh -c 'sleep 30 && pgrep -x "notion-calendar-snap" || notion-calendar-snap'
 
 assign [class="Spotify"] $ws10
 

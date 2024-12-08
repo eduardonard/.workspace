@@ -2,8 +2,6 @@
 ###################################bindsyms#################################################
 ############################################################################################
 
-bindsym $mod+Return      exec gnome-terminal
-bindsym $mod+l exec --no-startup-id bash -c 'systemctl suspend && i3lock -n -c 000000'
 
 bindsym $mod+$mods+o exec off
 # Keybindings for changing keyboard layouts
@@ -19,10 +17,13 @@ bindsym $mod+$mods+q kill
 bindsym $mod+$mods+c reload
 bindsym $mod+$mods+r restart
 bindsym $mod+$mods+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$mods+d exec --no-startup-id ~/.workspace/.config/scripts/monitor-change
 # Keybinding for toggling window floating mode
 bindsym $mod+$mods+space floating toggle
 
 
+bindsym $mod+Return      exec gnome-terminal
+bindsym $mod+l exec --no-startup-id bash -c 'systemctl suspend && i3lock -n -c 222222'
 bindsym $mod+h           split h
 bindsym $mod+v           split v
 bindsym $mod+e           layout toggle split

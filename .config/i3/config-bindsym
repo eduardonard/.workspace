@@ -17,7 +17,7 @@ bindsym $mod+$mods+q kill
 bindsym $mod+$mods+c reload
 bindsym $mod+$mods+r restart
 bindsym $mod+$mods+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+$mods+d exec --no-startup-id ~/.workspace/.config/scripts/monitor-change
+bindsym $mod+$mods+d exec --no-startup-id ~/.workspace/.config/scripts/monitor-change.py
 # Keybinding for toggling window floating mode
 bindsym $mod+$mods+space floating toggle
 

@@ -35,7 +35,3 @@ exec --no-startup-id sh -c 'sleep 6 && pgrep -x "slack"              || slack'
 ##################################################################################################
 for_window [class="Gedit"]                floating enable
 
-
-
-##################################################################################################
-exec --no-startup-id ~/.workspace/.config/scripts/monitor-change

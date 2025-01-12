@@ -3,19 +3,19 @@
 ############################################################################################
 
 # move focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus Down
+bindsym $mod+k focus Up
+bindsym $mod+l focus right
 
 #move window
-bindsym $mod+$mods+Left move left
-bindsym $mod+$mods+Down move down
-bindsym $mod+$mods+Up move up
-bindsym $mod+$mods+Right move right
+bindsym $mod+$mods+h move left
+bindsym $mod+$mods+j move Down
+bindsym $mod+$mods+k move Up
+bindsym $mod+$mods+l move right
 
 # move workspace
-bindsym $mod+Ctrl+Right move workspace to output right
-bindsym $mod+Ctrl+Left move workspace to output left
-bindsym $mod+Ctrl+Up move workspace to output Up
-bindsym $mod+Ctrl+Down move workspace to output Down
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output Down
+bindsym $mod+Ctrl+k move workspace to output Up
+bindsym $mod+Ctrl+l move workspace to output right

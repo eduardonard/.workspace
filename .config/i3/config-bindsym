@@ -18,14 +18,12 @@ bindsym $mod+$mods+c reload
 bindsym $mod+$mods+r restart
 bindsym $mod+$mods+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+$mods+d exec --no-startup-id ~/.workspace/.config/scripts/monitor-change.py
+bindsym $mod+$mods+m exec --no-startup-id bash -c 'sudo systemctl hybrid-sleep && i3lock -n -c 555555'
 # Keybinding for toggling window floating mode
 bindsym $mod+$mods+space floating toggle
 
 
 bindsym $mod+Return      exec gnome-terminal
-bindsym $mod+l exec --no-startup-id bash -c 'systemctl suspend && i3lock -n -c 222222'
-bindsym $mod+h           split h
-bindsym $mod+v           split v
 bindsym $mod+e           layout toggle split
 bindsym $mod+x           exec gnome-control-center
 

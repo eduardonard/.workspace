@@ -19,5 +19,8 @@ bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
 }
 
+exec_always feh --bg-fill ~/.workspace/.config/wallpaper/wallpaper.png
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
+
+exec --no-startup-id ~/.screenlayout/home.sh

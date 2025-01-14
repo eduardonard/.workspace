@@ -5,25 +5,21 @@ import subprocess
 HOME_PC = "eDP1"
 home_pc = {
     "xrandrName": HOME_PC,
-    "xrandrConfig": f"--output {HOME_PC} --scale 1x1 --mode 1920x1200 --pos 0x240",
 }
 
 HOME_TV = "HDMI1"
 home_tv = {
     "xrandrName": HOME_TV,
-    "xrandrConfig": f"--output {HOME_TV} --scale 1x1 --mode 2560x1440 --pos 2380x0",
 }
 
 WORK_PC = "eDP-1"
 work_pc = {
     "xrandrName": WORK_PC,
-    "xrandrConfig": f"--output {WORK_PC} --scale 0.75x0.75 --mode 3840x2400 --pos 0x900",
 }
 
 WORK_TV = "DP-1"
 work_tv = {
     "xrandrName": WORK_TV,
-    "xrandrConfig": f"--output {WORK_TV} --scale 1.25x1.25 --mode 3840x2160 --pos 2880x0",
 }
 
 
@@ -39,6 +35,8 @@ def is_connected(display):
 
 for display in displays:
     if is_connected(display["xrandrName"]):
-        run_command("xrandr " + display["xrandrConfig"])
+        # run_command("xrandr " + display["xrandrConfig"])
+        run_command("xrandr --output " + display["xrandrName"] + " --auto")
     else:
         run_command("xrandr --output " + display["xrandrName"] + " --off")
+    run_command("~/.screenlayout/home.sh")
